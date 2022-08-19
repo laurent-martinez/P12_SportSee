@@ -1,5 +1,6 @@
 .VerticalNavbar {
     background-color: black;
+
     position: fixed;
     left: 0;
     height: 100vh;
@@ -9,8 +10,9 @@
     margin: 0;
     padding: 0;
     width: 117px;
-    
-    &_items {
+    &_wrapper {
+
+           &_items {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -26,4 +28,6 @@
         transform: rotate(-90deg);
         white-space: noWrap;
     }
+    }
+ 
 }

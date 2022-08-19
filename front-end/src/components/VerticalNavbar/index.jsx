@@ -4,8 +4,9 @@ import React from 'react'
 const VerticalNavbar = () => {
    return (
       <div className="VerticalNavbar">
-         <ul className="VerticalNavbar_items">
-            <li className="VerticalNavbar_items_item">
+         <div className="VerticalNavbar_wrapper"></div>
+         <ul className="VerticalNavbar_wrapper_items">
+            <li className="VerticalNavbar_wrapper_items_item">
                <svg
                   width="64"
                   height="64"
@@ -43,7 +44,7 @@ const VerticalNavbar = () => {
                   />
                </svg>
             </li>
-            <li className="VerticalNavbar_items_item">
+            <li className="VerticalNavbar_wrapper_items_item">
                <svg
                   width="64"
                   height="64"
@@ -58,7 +59,7 @@ const VerticalNavbar = () => {
                   />
                </svg>
             </li>
-            <li className="VerticalNavbar_items_item">
+            <li className="VerticalNavbar_wrapper_items_item">
                <svg
                   width="64"
                   height="64"
@@ -74,7 +75,7 @@ const VerticalNavbar = () => {
                </svg>
             </li>
          </ul>
-         <div className="VerticalNavbar_copyrights">
+         <div className="VerticalNavbar_wrapper_copyrights">
             <p>Copyright, SportSee 2020</p>
          </div>
       </div>
