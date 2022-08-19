@@ -1,0 +1,29 @@
+.VerticalNavbar {
+    background-color: black;
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 117px;
+    
+    &_items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        &_item {
+        padding-top: 15px;
+        }
+    }
+    &_copyrights {
+        color: white;
+        margin-top: 100px;
+        transform: rotate(-90deg);
+        white-space: noWrap;
+    }
+}
