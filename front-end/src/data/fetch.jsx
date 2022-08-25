@@ -1,70 +1,60 @@
-import { useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
 
-const useFetchUser = () => {
-   const [user, setUser] = useState([])
-   useEffect(() => {
-      const fetchUser = () => {
-         fetch('http://localhost:3000/user/18')
-            .then((res) => res.json())
-            .then((result) => {
-               setUser(result.data)
-            })
-      }
-      fetchUser()
-   }, [])
+// const useFetchUser = () => {
+//    const [userData, setUserData] = useState([])
+//    useEffect(() => {
+//       const fetchUser = () => {
+//          fetch('http://localhost:3000/user/18')
+//             .then((res) => res.json())
+//             .then((result) => {
+//                setUserData(result.data)
+//             })
+//       }
+//       fetchUser()
+//    }, [])
 
-   return user
-}
-const useFetchActivities = () => {
+//    return userData
+
+export const dataContext = createContext(null)
+export const DataContextProvider = ({ children }) => {
+   const [userData, setUserData] = useState([])
    const [activity, setActivity] = useState([])
-   useEffect(() => {
-      const fetchActivity = () => {
-         fetch('http://localhost:3000/user/18/activity')
-            .then((res) => res.json())
-            .then((result) => {
-               setActivity(result.data)
-            })
-      }
-      fetchActivity()
-   }, [])
-   return activity
-}
-
-const useFetchSessions = () => {
    const [session, setSession] = useState([])
-
-   useEffect(() => {
-      const fetchSession = () => {
-         fetch('http://localhost:3000/user/average-sessions')
-            .then((res) => res.json())
-            .then((result) => {
-               setSession(result.data)
-            })
-      }
-      fetchSession()
-   }, [])
-   return session
-}
-
-const useFetchPerformances = () => {
    const [performance, setPerformance] = useState([])
 
    useEffect(() => {
-      const fetchPerformance = () => {
-         fetch('http://localhost:3000/user/18/performance')
-            .then((res) => res.json())
-            .then((result) => {
-               setPerformance(result.data)
-            })
-      }
-      fetchPerformance()
-   }, [])
-   return performance
-}
+      const userDataUrl = 'http://localhost:3000/user/18'
+      const activityUrl = 'http://localhost:3000/user/18/activity'
+      const sessionUrl = 'http://localhost:3000/user/18/average-sessions'
+      const performanceUrl = 'http://localhost:3000/user/18/performance'
 
-export {
-   useFetchUser,
-   useFetchActivities,
-   useFetchSessions,
-   useFetchPerformances,
+      const getUserData = axios.get(userDataUrl)
+      const getActivity = axios.get(activityUrl)
+      const getSession = axios.get(sessionUrl)
+      const getPerformance = axios.get(performanceUrl)
+
+      axios.all([getUserData, getActivity, getSession, getPerformance]).then(
+         axios.spread((...allData) => {
+            const allDataUser = allData[0]
+            const allDataActivity = allData[1]
+            const allDataSession = allData[2]
+            const allDataPerformance = allData[3]
+
+            setUserData(allDataUser.data.data.userInfos)
+            setActivity(allDataActivity.data.data.sessions)
+            setSession(allDataSession.data.data.sessions)
+            setPerformance(allDataPerformance.data.data.data)
+         })
+      )
+   }, [])
+
+   const value = {
+      userData,
+      activity,
+      performance,
+      session,
+   }
+   return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }
