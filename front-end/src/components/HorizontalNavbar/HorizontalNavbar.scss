@@ -1,7 +1,9 @@
 .HorizontalNavbar {
     background-color: black;
-    display: flex;
+    grid-area: nav;
+    z-index: 10;
     padding: 20px;
+    display: flex;
 
     &_logo {
         width: 20%;

@@ -1,14 +1,15 @@
 import './RadialBarChatScore.scss'
-// import { useFetchUser } from '../../data/fetch'
-import { RadialBarChart, RadialBar } from 'recharts'
+// import { RadialBarChart, RadialBar } from 'recharts'
+// import { useContext } from 'react'
+// import { dataContext } from '../../data/fetch'
 
 const RadialBarChatScore = () => {
-   // const score = useFetchUser()
+   // const {userData} = useContext(dataContext)
    // const goodScore = score.score * 100
 
    return (
       <div className="radial-bar-chat-score">
-         <RadialBarChart
+         {/* <RadialBarChart
             width={730}
             height={250}
             innerRadius="10%"
@@ -20,7 +21,7 @@ const RadialBarChatScore = () => {
             cy={100}
          >
             <RadialBar minAngle={15} value={goodScore} fill="#0000" />
-         </RadialBarChart>
+         </RadialBarChart> */}
       </div>
    )
 }

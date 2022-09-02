@@ -1,29 +1,34 @@
 import React from 'react'
-// import RadialBarChatScore from '../RadialBarChatScore'
+import RadialBarChatScore from '../RadialBarChatScore'
 import BarChartActivity from '../BarChartActivity'
 import RadarChartPerformance from '../RadarChartPerformance'
 import LineChartDuration from '../LineChartDuration'
 import './MainContent.scss'
-import { useContext } from 'react'
-import { dataContext } from '../../data/fetch'
+import Greetings from '../Greetings'
+import Composition from '../composition'
 const MainContent = () => {
-   const { userData } = useContext(dataContext)
-   console.log(userData)
    // const test = useFetchUser()
    // console.log(test.userInfos.firstName)
    return (
       <div className="MainContent">
-         <h1 className="MainContent_title">
-            Bonjour <span>{userData.firstName}</span>
-         </h1>
-
-         <BarChartActivity />
-         <div className="test">
+         <div className="greetings">
+            <Greetings />
+         </div>
+         <div className="barchart">
+            <BarChartActivity />
+         </div>
+         <div className="linechart">
             <LineChartDuration />
+         </div>
+         <div className="radarchart">
             <RadarChartPerformance />
          </div>
-
-         {/* <RadialBarChatScore /> */}
+         <div className="radialchart">
+            <RadialBarChatScore />
+         </div>
+         <div className="composition">
+            <Composition />
+         </div>
       </div>
    )
 }

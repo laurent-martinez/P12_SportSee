@@ -1,8 +1,7 @@
 .VerticalNavbar {
     background-color: black;
-
-    position: fixed;
-    left: 0;
+    grid-area: sidebar;
+   
     height: 100vh;
     display: flex;
     flex-direction: column;

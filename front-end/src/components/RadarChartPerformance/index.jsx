@@ -11,29 +11,29 @@ import { dataContext } from '../../data/fetch'
 
 const RadarChartPerformance = () => {
    const { performance } = useContext(dataContext)
-   console.log(performance)
+   console.log('perf', performance)
 
-   let kinds = [
-      'Intensité',
-      'Vitesse',
-      'Force',
-      'Endurance',
-      'Energie',
-      'Cardio',
-   ]
-   let performanceData = performance.map((sess, index) => {
-      return {
-         kind: kinds[index],
-         value: sess.value,
-      }
-   })
+   // let kinds = [
+   //    'Intensité',
+   //    'Vitesse',
+   //    'Force',
+   //    'Endurance',
+   //    'Energie',
+   //    'Cardio',
+   // ]
+   // let performanceData = performance.map((sess, index) => {
+   //    return {
+   //       kind: kinds[index],
+   //       value: sess.value,
+   //    }
+   // })
    return (
       <div className="RadarChartPerformance">
          <RadarChart
             outerRadius={90}
             width={730}
             height={250}
-            data={performanceData}
+            data={performance.performanceData}
          >
             <PolarGrid />
             <PolarAngleAxis dataKey="kind" />

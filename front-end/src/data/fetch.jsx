@@ -1,6 +1,10 @@
 import { createContext, useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+import keyDataFormater from './models/KeyDataFormater'
+import UserDataFormater from './models/UserDataFormater'
+import SessionDataFormater from './models/SessionDataFormater'
+import PerformanceDataFormater from './models/PerformanceDataFormater'
 
 // const useFetchUser = () => {
 //    const [userData, setUserData] = useState([])
@@ -20,6 +24,7 @@ import { useEffect } from 'react'
 export const dataContext = createContext(null)
 export const DataContextProvider = ({ children }) => {
    const [userData, setUserData] = useState([])
+   const [keyData, setKeyData] = useState([])
    const [activity, setActivity] = useState([])
    const [session, setSession] = useState([])
    const [performance, setPerformance] = useState([])
@@ -42,10 +47,24 @@ export const DataContextProvider = ({ children }) => {
             const allDataSession = allData[2]
             const allDataPerformance = allData[3]
 
-            setUserData(allDataUser.data.data.userInfos)
+            const keyDataFormat = new keyDataFormater(
+               allDataUser.data.data.keyData
+            )
+
+            const userDataFormat = new UserDataFormater(
+               allDataUser.data.data.userInfos
+            )
+            const sessionDataFormat = new SessionDataFormater(
+               allDataSession.data.data.sessions
+            )
+            const performanceDataFormat = new PerformanceDataFormater(
+               allDataPerformance.data.data.data
+            )
+            setUserData(userDataFormat)
+            setKeyData(keyDataFormat)
             setActivity(allDataActivity.data.data.sessions)
-            setSession(allDataSession.data.data.sessions)
-            setPerformance(allDataPerformance.data.data.data)
+            setSession(sessionDataFormat)
+            setPerformance(performanceDataFormat)
          })
       )
    }, [])
@@ -55,6 +74,7 @@ export const DataContextProvider = ({ children }) => {
       activity,
       performance,
       session,
+      keyData,
    }
    return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }

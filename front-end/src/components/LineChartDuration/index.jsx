@@ -5,18 +5,18 @@ import './LineChartDuration.scss'
 
 const LineChartDuration = () => {
    const { session } = useContext(dataContext)
-
-   let days = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
-   let sessionData = session.map((sess, index) => {
-      return {
-         day: days[index],
-         sessionLength: sess.sessionLength,
-      }
-   })
+   console.log(session.sessionsData)
+   // let days = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+   // let sessionData = session.map((sess, index) => {
+   //    return {
+   //       day: days[index],
+   //       sessionLength: sess.sessionLength,
+   //    }
+   // })
 
    return (
       <div className="LineChartDuration">
-         <LineChart width={256} height={256} data={sessionData}>
+         <LineChart width={256} height={256} data={session.sessionsData}>
             <Tooltip />
             <Line
                dataKey="sessionLength"
