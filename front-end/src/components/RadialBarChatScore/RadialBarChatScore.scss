@@ -1,3 +1,30 @@
 .radial-bar-chat-score {
- 
+    border-radius: 5px;
+    &_text {
+        font-size: 18px;
+        line-height: 24px;
+        color: #20253A;
+    }
+}
+
+.score-legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 100px;
+    &_percentage {
+        font-size: 26px;
+        color: #282D30;
+        font-weight: 700;
+        line-height: 26px;
+        margin: 0;
+    }
+    &_text {
+        font-size: 20px;
+        color: #74798C;
+        font-weight: 500;
+        line-height: 26px;
+        margin: 0;
+    }
 }

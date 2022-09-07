@@ -3,6 +3,7 @@ grid-area: main;
    padding: 20px;
    margin-bottom: 100px;
 display: grid;
+gap: 2%;
 grid-template-columns: repeat(4, 3fr);
 grid-template-rows: 4fr 4fr 4fr;
 grid-template-areas: "greetings greetings greetings greetings"

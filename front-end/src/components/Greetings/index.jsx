@@ -1,11 +1,8 @@
 import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
 import { dataContext } from '../../data/fetch'
 import './greetings.scss'
 
 const Greetings = () => {
-   const { id } = useParams()
-   console.log('kiiks', id)
    const { userData } = useContext(dataContext)
    return (
       <div className="greeting">

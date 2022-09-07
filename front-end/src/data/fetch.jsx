@@ -28,12 +28,18 @@ export const DataContextProvider = ({ children }) => {
    const [activity, setActivity] = useState([])
    const [session, setSession] = useState([])
    const [performance, setPerformance] = useState([])
+   const [userScore, setUserScore] = useState([])
+   // const searchGet = (str) =>
+   //    new URLSearchParams(window.location.search).get(str)
+   // const id = searchGet('user')
 
    useEffect(() => {
-      const userDataUrl = 'http://localhost:3000/user/18'
-      const activityUrl = 'http://localhost:3000/user/18/activity'
-      const sessionUrl = 'http://localhost:3000/user/18/average-sessions'
-      const performanceUrl = 'http://localhost:3000/user/18/performance'
+      const url = parseInt(window.location.pathname.slice(6))
+      console.log('heyyyyyyyyyyyyyyyyyyyyyy', url)
+      const userDataUrl = `http://localhost:3000/user/${url}`
+      const activityUrl = `http://localhost:3000/user/${url}/activity`
+      const sessionUrl = `http://localhost:3000/user/${url}/average-sessions`
+      const performanceUrl = `http://localhost:3000/user/${url}/performance`
 
       const getUserData = axios.get(userDataUrl)
       const getActivity = axios.get(activityUrl)
@@ -42,29 +48,34 @@ export const DataContextProvider = ({ children }) => {
 
       axios.all([getUserData, getActivity, getSession, getPerformance]).then(
          axios.spread((...allData) => {
-            const allDataUser = allData[0]
-            const allDataActivity = allData[1]
-            const allDataSession = allData[2]
-            const allDataPerformance = allData[3]
+            // const allDataUser = allData[0]
+            // const allDataActivity = allData[1]
+            // const allDataSession = allData[2]
+            // const allDataPerformance = allData[3]
 
             const keyDataFormat = new keyDataFormater(
-               allDataUser.data.data.keyData
+               allData[0].data.data.keyData
             )
 
             const userDataFormat = new UserDataFormater(
-               allDataUser.data.data.userInfos
+               allData[0].data.data.userInfos
             )
             const sessionDataFormat = new SessionDataFormater(
-               allDataSession.data.data.sessions
+               allData[2].data.data.sessions
             )
             const performanceDataFormat = new PerformanceDataFormater(
-               allDataPerformance.data.data.data
+               allData[3].data.data.data
             )
+            // const activityDataFormat = new ActivityDataFormater(
+            //    allData[1].data.data.sessions
+            // )
+
             setUserData(userDataFormat)
             setKeyData(keyDataFormat)
-            setActivity(allDataActivity.data.data.sessions)
+            setActivity(allData[1].data.data.sessions)
             setSession(sessionDataFormat)
             setPerformance(performanceDataFormat)
+            setUserScore(allData[0].data.data.score)
          })
       )
    }, [])
@@ -75,6 +86,7 @@ export const DataContextProvider = ({ children }) => {
       performance,
       session,
       keyData,
+      userScore,
    }
    return <dataContext.Provider value={value}>{children}</dataContext.Provider>
 }

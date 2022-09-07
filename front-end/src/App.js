@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { DataContextProvider } from './data/fetch'
-
+import SelectPage from './pages/SelectPage'
 import Home from './pages/Home'
 
 // all the routes for the app using react-router v6
@@ -10,7 +10,8 @@ const ReactRouter = () => {
       <DataContextProvider>
          <BrowserRouter>
             <Routes>
-               <Route path="/" element={<Home />} />
+               <Route path="/" element={<SelectPage />} />
+               <Route path="/user/:id" element={<Home />} />
             </Routes>
          </BrowserRouter>
       </DataContextProvider>

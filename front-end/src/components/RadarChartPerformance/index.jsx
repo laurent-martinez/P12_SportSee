@@ -3,16 +3,14 @@ import {
    PolarGrid,
    RadarChart,
    PolarAngleAxis,
-   PolarRadiusAxis,
    Radar,
+   ResponsiveContainer,
 } from 'recharts'
 import { useContext } from 'react'
 import { dataContext } from '../../data/fetch'
 
 const RadarChartPerformance = () => {
    const { performance } = useContext(dataContext)
-   console.log('perf', performance)
-
    // let kinds = [
    //    'Intensité',
    //    'Vitesse',
@@ -28,24 +26,39 @@ const RadarChartPerformance = () => {
    //    }
    // })
    return (
-      <div className="RadarChartPerformance">
+      <ResponsiveContainer
+         className="RadarChartPerformance"
+         width="100%"
+         height="100%"
+         aspect={1}
+      >
          <RadarChart
-            outerRadius={90}
-            width={730}
-            height={250}
+            x="50%"
+            cy="50%"
+            outerRadius="75%"
             data={performance.performanceData}
          >
-            <PolarGrid />
-            <PolarAngleAxis dataKey="kind" />
-            <PolarRadiusAxis angle={30} domain={[0, 300]} />
+            <PolarGrid radialLines={false} />
+            <PolarAngleAxis
+               dataKey="kind"
+               stroke="#FFF"
+               dy={5}
+               tickLine={false}
+               tick={{
+                  fontSize: '15px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+               }}
+            />
             <Radar
+               name=""
                dataKey="value"
-               stroke="#8884d8"
-               fill="#8884d8"
-               fillOpacity={0.6}
+               stroke="transparent"
+               fill="#E60000"
+               fillOpacity={0.8}
             />
          </RadarChart>
-      </div>
+      </ResponsiveContainer>
    )
 }
 
