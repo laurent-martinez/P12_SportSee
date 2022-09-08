@@ -77,7 +77,10 @@ const BarChartActivity = () => {
                      fill="#E60000"
                   />
                   <XAxis dataKey="day" tickLine={false} />
-                  <Tooltip content={<CustomToolTip />} />
+                  <Tooltip
+                     content={<CustomToolTip />}
+                     cursor={{ fill: '#c4c4c4', opacity: '50%' }}
+                  />
                </BarChart>
             </ResponsiveContainer>
          )}

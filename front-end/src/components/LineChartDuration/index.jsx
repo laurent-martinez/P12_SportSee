@@ -14,7 +14,18 @@ import './LineChartDuration.scss'
 
 const LineChartDuration = () => {
    const { session } = useContext(dataContext)
-
+   const CustomLinechartTooltip = ({ active, payload }) => {
+      if (active) {
+         return (
+            <div className="linechartTooltip">
+               <div className="linechartTooltip_item">
+                  {payload[0].value} min
+               </div>
+            </div>
+         )
+      }
+      return null
+   }
    // let days = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
    // let sessionData = session.map((sess, index) => {
    //    return {
@@ -43,7 +54,7 @@ const LineChartDuration = () => {
                horizontal={false}
                vertical={false}
             />
-            <Tooltip />
+            <Tooltip content={<CustomLinechartTooltip />} />
             <Line
                type="monotone"
                stroke="#FFFFFF"

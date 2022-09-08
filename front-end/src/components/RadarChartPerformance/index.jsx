@@ -21,7 +21,7 @@ const RadarChartPerformance = () => {
          <RadarChart
             x="50%"
             cy="50%"
-            outerRadius="75%"
+            outerRadius="92%"
             data={performance.performanceData}
          >
             <PolarGrid radialLines={false} />
@@ -31,9 +31,10 @@ const RadarChartPerformance = () => {
                dy={5}
                tickLine={false}
                tick={{
-                  fontSize: '15px',
+                  fontSize: '18px',
                   fontWeight: 500,
                   lineHeight: '24px',
+                  padding: '15px',
                }}
             />
             <Radar

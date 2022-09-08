@@ -1,5 +1,9 @@
 .radial-bar-chat-score {
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#FBFBFB;
     &_text {
         font-size: 18px;
         line-height: 24px;
@@ -12,19 +16,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 100px;
+    margin-top: 50px;
     &_percentage {
-        font-size: 26px;
+        font-size: 30px;
         color: #282D30;
         font-weight: 700;
         line-height: 26px;
-        margin: 0;
+        margin: 10px;
     }
     &_text {
-        font-size: 20px;
+        font-size: 24px;
         color: #74798C;
         font-weight: 500;
         line-height: 26px;
-        margin: 0;
+        margin: 10px;
     }
 }

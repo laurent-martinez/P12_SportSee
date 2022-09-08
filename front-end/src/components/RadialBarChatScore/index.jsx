@@ -19,7 +19,7 @@ const RadialBarChatScore = () => {
       {
          name: 'base',
          uv: 1,
-         fill: '#F4F4F4',
+         fill: 'white',
       },
    ]
    const ScoreText = () => {
@@ -39,25 +39,22 @@ const RadialBarChatScore = () => {
       >
          <RadialBarChart
             minAngle={30}
-            barSize={10}
+            barSize={14}
             cx="50%"
             cy="50%"
-            innerRadius="60%"
-            outerRadius="80%"
+            innerRadius="100%"
+            outerRadius="60%"
             startAngle={200}
             endAngle={-160}
             data={scoreData}
-            style={{ height: '100%', backgroundColor: '#F4F4F4' }}
          >
+            <circle cx="50%" cy="50%" fill="white" r="105"></circle>
             <RadialBar
-               background
                dataKey="uv"
                angleAxisId={1}
-               fill="#E60000"
+               background={{ fill: 'white' }}
                cornerRadius="10"
-               style={{ backgroundColor: 'white' }}
             />
-
             <text
                x="15%"
                y="15%"
