@@ -7,8 +7,6 @@ import './MainContent.scss'
 import Greetings from '../Greetings'
 import Composition from '../composition'
 const MainContent = () => {
-   // const test = useFetchUser()
-   // console.log(test.userInfos.firstName)
    return (
       <div className="MainContent">
          <div className="greetings">

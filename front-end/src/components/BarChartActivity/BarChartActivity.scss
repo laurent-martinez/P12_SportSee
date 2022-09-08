@@ -1,3 +1,15 @@
 .barChartActivity {
     background-color: #FBFBFB;
 }
+.barchartTooltip {
+    background-color: #E60000;
+    padding: 15px;
+    width: 39px;
+    height: 63px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}

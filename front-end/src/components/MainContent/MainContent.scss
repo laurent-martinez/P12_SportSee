@@ -1,11 +1,10 @@
 .MainContent {
 grid-area: main;
-   padding: 20px;
-   margin-bottom: 100px;
+padding: 20px;
 display: grid;
 gap: 2%;
 grid-template-columns: repeat(4, 3fr);
-grid-template-rows: 4fr 4fr 4fr;
+grid-template-rows: 2fr 4fr 4fr;
 grid-template-areas: "greetings greetings greetings greetings"
 "barchart barchart barchart composition"
 "linechart radarchart radialchart composition";

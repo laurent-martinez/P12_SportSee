@@ -1,13 +1,12 @@
-body {
+#root, body {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    overflow: hidden;
     width: 100vw;
     height: 100vh;
-   
+   box-sizing: border-box;
 
 }
 

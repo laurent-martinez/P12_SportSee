@@ -10,7 +10,6 @@ import { dataContext } from '../../data/fetch'
 
 const RadialBarChatScore = () => {
    const { userScore } = useContext(dataContext)
-   console.log('glouglou', userScore)
    const scoreData = [
       {
          name: 'user',
@@ -23,7 +22,6 @@ const RadialBarChatScore = () => {
          fill: '#F4F4F4',
       },
    ]
-   console.log('newData', scoreData)
    const ScoreText = () => {
       return (
          <div className="score-legend">
@@ -37,8 +35,7 @@ const RadialBarChatScore = () => {
       <ResponsiveContainer
          className="radial-bar-chat-score"
          width="100%"
-         height="100%"
-         aspect={1}
+         aspect={1.3}
       >
          <RadialBarChart
             minAngle={30}

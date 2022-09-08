@@ -1,5 +1,13 @@
 import { useContext } from 'react'
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+   CartesianGrid,
+   Line,
+   LineChart,
+   ResponsiveContainer,
+   Tooltip,
+   XAxis,
+   YAxis,
+} from 'recharts'
 import { dataContext } from '../../data/fetch'
 
 import './LineChartDuration.scss'
@@ -16,10 +24,12 @@ const LineChartDuration = () => {
    // })
 
    return (
-      <div className="LineChartDuration">
+      <ResponsiveContainer
+         width="100%"
+         aspect={1.3}
+         className="LineChartDuration"
+      >
          <LineChart
-            width={500}
-            height={300}
             data={session.sessionsData}
             margin={{
                top: 20,
@@ -68,7 +78,7 @@ const LineChartDuration = () => {
                Durée moyenne des sessions
             </text>
          </LineChart>
-      </div>
+      </ResponsiveContainer>
    )
 }
 
