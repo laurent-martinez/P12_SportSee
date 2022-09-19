@@ -1,15 +1,15 @@
-#root, body {
+ body {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    width: 100vw;
-    height: 100vh;
-   box-sizing: border-box;
-
+    box-sizing: border-box;
 }
-
+.App {
+    width: 100vw;
+    max-height: 100vh;
+}
 li {
     list-style-type: none;
 }

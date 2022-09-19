@@ -260,9 +260,18 @@ const USER_PERFORMANCE = [
    },
 ]
 
-module.exports = {
+// module.exports = {
+//    USER_MAIN_DATA,
+//    USER_ACTIVITY,
+//    USER_AVERAGE_SESSIONS,
+//    USER_PERFORMANCE,
+// }
+
+const mockedDatas = [
    USER_MAIN_DATA,
    USER_ACTIVITY,
    USER_AVERAGE_SESSIONS,
    USER_PERFORMANCE,
-}
+]
+
+export { mockedDatas }

@@ -1,8 +1,19 @@
+.nutriScore {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 613px;
+}
+
 .composition_cell {
     display: flex;
-    padding: 20px;
+    padding-left: 30px;
     align-items: center;
+    width: 258px;
+    height: 124px;
     background-color: #FBFBFB;
+    margin-bottom: 50px;
+    
 
     &_infos {
         margin-left: 20px;

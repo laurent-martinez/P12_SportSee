@@ -1,3 +1,7 @@
+.linechart {
+  height: 263px;
+	width: 258px;
+}
 .LineChartDuration {
   display: flex;
   justify-content: center;
@@ -9,7 +13,7 @@
   &_text {
     opacity: 0.6;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 24px;
   }
 }

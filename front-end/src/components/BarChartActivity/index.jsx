@@ -3,6 +3,7 @@ import {
    BarChart,
    Bar,
    XAxis,
+   Legend,
    Tooltip,
    ResponsiveContainer,
    CartesianGrid,
@@ -40,49 +41,82 @@ const BarChartActivity = () => {
       <>
          {isLoading && <></>}
          {!isLoading && (
-            <ResponsiveContainer
-               className="barChartActivity"
-               width="100%"
-               aspect={4}
-            >
-               <BarChart width={730} height={250} data={activityData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <YAxis
-                     yAxisId="weight"
-                     domain={['dataMin-1', 'dataMax+2']}
-                     orientation="right"
-                     axisLine={false}
-                     tickLine={false}
-                     tickMargin={10}
-                     tickCount={3}
-                  />
-                  <YAxis
-                     yAxisId="calories"
-                     axisLine={false}
-                     tickLine={false}
-                     hide
-                  />
-                  <Bar
-                     barSize={12}
-                     yAxisId="weight"
-                     radius={[10, 10, 0, 0]}
-                     dataKey="kilogram"
-                     fill="#282D30"
-                  />
-                  <Bar
-                     barSize={12}
-                     radius={[10, 10, 0, 0]}
-                     yAxisId="calories"
-                     dataKey="calories"
-                     fill="#E60000"
-                  />
-                  <XAxis dataKey="day" tickLine={false} />
-                  <Tooltip
-                     content={<CustomToolTip />}
-                     cursor={{ fill: '#c4c4c4', opacity: '50%' }}
-                  />
-               </BarChart>
-            </ResponsiveContainer>
+            <div className="barchart">
+               <ResponsiveContainer
+                  className="barChartActivity"
+                  width="100%"
+                  height="100%"
+                  aspect={3}
+               >
+                  <BarChart
+                     data={activityData}
+                     margin={{
+                        top: 10,
+                        right: 30,
+                        left: 0,
+                        bottom: -25,
+                     }}
+                  >
+                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                     <Legend
+                        className="barchart-legend"
+                        wrapperStyle={{ top: -25, left: '30%' }}
+                        iconType="circle"
+                        formatter={(value) => {
+                           console.log(value)
+                           return (
+                              <span style={{ color: '#74798C' }}> {value}</span>
+                           )
+                        }}
+                     />
+                     <YAxis
+                        yAxisId="weight"
+                        domain={['dataMin-1', 'dataMax+2']}
+                        orientation="right"
+                        axisLine={false}
+                        tickLine={false}
+                        tickMargin={20}
+                        tickCount={3}
+                     />
+                     <YAxis
+                        yAxisId="calories"
+                        tickLine={false}
+                        orientation="bottom"
+                        tickMargin={10}
+                        hide
+                     />
+                     <Bar
+                        barSize={12}
+                        name="Poids (kg)"
+                        yAxisId="weight"
+                        radius={[10, 10, 0, 0]}
+                        dataKey="kilogram"
+                        fill="#282D30"
+                     />
+                     <Bar
+                        barSize={12}
+                        name="Calories brûlées (kCal)"
+                        radius={[10, 10, 0, 0]}
+                        yAxisId="calories"
+                        dataKey="calories"
+                        fill="#E60000"
+                     />
+                     <XAxis dataKey="day" tickLine={false} />
+                     <Tooltip
+                        content={<CustomToolTip />}
+                        cursor={{ fill: '#c4c4c4', opacity: '50%' }}
+                     />
+                     <text
+                        x={110}
+                        y={0}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                     >
+                        Activité quotidienne
+                     </text>
+                  </BarChart>
+               </ResponsiveContainer>
+            </div>
          )}
       </>
    )

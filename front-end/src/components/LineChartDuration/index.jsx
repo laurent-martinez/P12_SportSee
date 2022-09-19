@@ -14,6 +14,7 @@ import './LineChartDuration.scss'
 
 const LineChartDuration = () => {
    const { session } = useContext(dataContext)
+   console.log(session)
    const CustomLinechartTooltip = ({ active, payload }) => {
       if (active) {
          return (
@@ -35,61 +36,65 @@ const LineChartDuration = () => {
    // })
 
    return (
-      <ResponsiveContainer
-         width="100%"
-         aspect={1.3}
-         className="LineChartDuration"
-      >
-         <LineChart
-            data={session.sessionsData}
-            margin={{
-               top: 20,
-               right: 30,
-               left: 30,
-               bottom: 0,
-            }}
+      <div className="linechart">
+         <ResponsiveContainer
+            width="100%"
+            height="100%"
+            className="LineChartDuration"
          >
-            <CartesianGrid
-               strokeDasharray="3 3"
-               horizontal={false}
-               vertical={false}
-            />
-            <Tooltip content={<CustomLinechartTooltip />} />
-            <Line
-               type="monotone"
-               stroke="#FFFFFF"
-               dataKey="sessionLength"
-               className="LineChartDuration_line"
-               activeDot={{ r: 4 }}
-               dot={false}
-               strokeWidth="3"
-            />
-
-            <XAxis
-               dataKey="day"
-               axisLine={false}
-               stroke="#FFF"
-               fillOpacity={0.6}
-               tick={{
-                  fontSize: '15px',
-                  fontWeight: 500,
-                  lineHeight: '24px',
+            <LineChart
+               data={session.sessionsData || session}
+               width={500}
+               height={300}
+               margin={{
+                  top: 20,
+                  right: 15,
+                  left: 15,
+                  bottom: 15,
                }}
-               tickLine={false}
-            />
-            <YAxis axisLine={false} hide={true} />
-            <text
-               x="10%"
-               y="12%"
-               className="LineChartDuration_text"
-               textAnchor="start"
-               dominantBaseline="middle"
-               fill="#FFF"
             >
-               Durée moyenne des sessions
-            </text>
-         </LineChart>
-      </ResponsiveContainer>
+               <CartesianGrid
+                  strokeDasharray="3 3"
+                  horizontal={false}
+                  vertical={false}
+               />
+               <Tooltip content={<CustomLinechartTooltip />} />
+               <Line
+                  type="monotone"
+                  stroke="#FFFFFF"
+                  dataKey="sessionLength"
+                  className="LineChartDuration_line"
+                  activeDot={{ r: 4 }}
+                  dot={false}
+                  strokeWidth="3"
+               />
+
+               <XAxis
+                  dataKey="day"
+                  axisLine={false}
+                  stroke="#FFF"
+                  fillOpacity={0.6}
+                  tick={{
+                     fontSize: '15px',
+                     fontWeight: 500,
+                     lineHeight: '24px',
+                  }}
+                  tickLine={false}
+               />
+               <YAxis axisLine={false} hide={true} />
+               <text
+                  x="10%"
+                  y="3%"
+                  className="LineChartDuration_text"
+                  textAnchor="start"
+                  dominantBaseline="middle"
+                  fill="#FFF"
+               >
+                  Durée moyenne des sessions
+               </text>
+            </LineChart>
+         </ResponsiveContainer>
+      </div>
    )
 }
 

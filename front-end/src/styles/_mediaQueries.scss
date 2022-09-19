@@ -1,0 +1,38 @@
+@media screen and (min-width:1500px) {
+    .container_main_content_stats{
+        justify-content: center;
+    }
+}
+
+
+
+
+@media screen and (max-width:1500px) {
+    .container_main_content {
+        margin: 0 0 0 50px
+    }
+}
+
+@media screen and (max-width:1342px) {
+    .container_main_content_stats {
+        flex-direction: column;
+    }
+    .composition {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 124px;
+      
+    }
+    .composition_cell {
+        width: 100%;
+        background-color: white;
+    }
+    .container_main_content_stats{
+        justify-content: center;
+    }
+    .nutriScore {
+        height: 100%;
+    }
+}

@@ -1,5 +1,10 @@
+import BarChartActivity from '../../components/BarChartActivity'
+import Composition from '../../components/composition'
+import Greetings from '../../components/Greetings'
 import HorizontalNavbar from '../../components/HorizontalNavbar'
-import MainContent from '../../components/MainContent'
+import LineChartDuration from '../../components/LineChartDuration'
+import RadarChartPerformance from '../../components/RadarChartPerformance'
+import RadialBarChatScore from '../../components/RadialBarChatScore'
 import VerticalNavbar from '../../components/VerticalNavbar'
 import './Home.scss'
 
@@ -8,8 +13,27 @@ const Home = () => {
       <>
          <div className="container">
             <HorizontalNavbar />
-            <VerticalNavbar />
-            <MainContent />
+            <div className="container_main">
+               <VerticalNavbar />
+               <div className="container_main_content">
+                  <div className="container_main_content_greetings">
+                     <Greetings />
+                  </div>
+                  <div className="container_main_content_stats">
+                     <div className="charts">
+                        <BarChartActivity />
+                        <div className="secondLineCharts">
+                           <LineChartDuration />
+                           <RadarChartPerformance />
+                           <RadialBarChatScore />
+                        </div>
+                     </div>
+                     <div className="nutriScore">
+                        <Composition />
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </>
    )

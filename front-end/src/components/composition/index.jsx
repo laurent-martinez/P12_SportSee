@@ -7,12 +7,12 @@ const Composition = () => {
    const { keyData } = useContext(dataContext)
 
    return (
-      <div>
+      <div className="composition">
          <div className="composition_cell">
             <img src="/img/calories.svg" alt="" />
             <div className="composition_cell_infos">
                <div className="composition_cell_infos_number">
-                  {keyData.calories}
+                  {keyData.calories || keyData.calorieCount}kCal
                </div>
                <div className="composition_cell_infos_values">Calories</div>
             </div>
@@ -22,7 +22,7 @@ const Composition = () => {
 
             <div className="composition_cell_infos">
                <div className="composition_cell_infos_number">
-                  {keyData.proteins}
+                  {keyData.proteins || keyData.proteinCount}g
                </div>
                <div className="composition_cell_infos_values">Proteines</div>
             </div>
@@ -32,7 +32,7 @@ const Composition = () => {
 
             <div className="composition_cell_infos">
                <div className="composition_cell_infos_number">
-                  {keyData.carbs}
+                  {keyData.carbs || keyData.carbohydrateCount}g
                </div>
                <div className="composition_cell_infos_values">Glucides</div>
             </div>
@@ -42,7 +42,7 @@ const Composition = () => {
 
             <div className="composition_cell_infos">
                <div className="composition_cell_infos_number">
-                  {keyData.lipids}
+                  {keyData.lipids || keyData.lipidCount}g
                </div>
                <div className="composition_cell_infos_values">Lipides</div>
             </div>

@@ -5,6 +5,15 @@ import keyDataFormater from './models/KeyDataFormater'
 import UserDataFormater from './models/UserDataFormater'
 import SessionDataFormater from './models/SessionDataFormater'
 import PerformanceDataFormater from './models/PerformanceDataFormater'
+import { mockedDatas } from './mockData'
+import {
+   ActivityMockedData,
+   keyDataMockedData,
+   PerformanceMockedData,
+   SessionsMockedData,
+   userMockedData,
+   userMockedScore,
+} from './models/mockedData'
 
 /**
  * initialize the context object
@@ -12,12 +21,6 @@ import PerformanceDataFormater from './models/PerformanceDataFormater'
  */
 export const dataContext = createContext(null)
 
-/**
- *
- * @param {*} param0
- * @type {React.FC}
- * @returns
- */
 export const DataContextProvider = ({ children }) => {
    const [userData, setUserData] = useState([])
    const [keyData, setKeyData] = useState([])
@@ -33,49 +36,62 @@ export const DataContextProvider = ({ children }) => {
    useEffect(() => {
       setIsLoading(true)
       const url = 18
-      const userDataUrl = `http://localhost:3000/user/${url}`
-      const activityUrl = `http://localhost:3000/user/${url}/activity`
-      const sessionUrl = `http://localhost:3000/user/${url}/average-sessions`
-      const performanceUrl = `http://localhost:3000/user/${url}/performance`
-      //base url
-      const getUserData = axios.get(userDataUrl)
-      const getActivity = axios.get(activityUrl)
-      const getSession = axios.get(sessionUrl)
-      const getPerformance = axios.get(performanceUrl)
+      if (mockedDatas) {
+         setUserData(userMockedData)
+         setKeyData(keyDataMockedData)
+         setUserScore(userMockedScore)
+         setActivity(ActivityMockedData())
+         setSession(SessionsMockedData())
+         setPerformance(PerformanceMockedData())
+         setIsLoading(false)
+      } else {
+         console.log(mockedDatas)
+         const userDataUrl = `http://localhost:3000/user/${url}`
+         const activityUrl = `http://localhost:3000/user/${url}/activity`
+         const sessionUrl = `http://localhost:3000/user/${url}/average-sessions`
+         const performanceUrl = `http://localhost:3000/user/${url}/performance`
+         //base url
+         const getUserData = axios.get(userDataUrl)
+         const getActivity = axios.get(activityUrl)
+         const getSession = axios.get(sessionUrl)
+         const getPerformance = axios.get(performanceUrl)
 
-      axios.all([getUserData, getActivity, getSession, getPerformance]).then(
-         axios.spread((...allData) => {
-            // const allDataUser = allData[0]
-            // const allDataActivity = allData[1]
-            // const allDataSession = allData[2]
-            // const allDataPerformance = allData[3]
+         axios.all([getUserData, getActivity, getSession, getPerformance]).then(
+            axios.spread((...allData) => {
+               // const allDataUser = allData[0]
+               // const allDataActivity = allData[1]
+               // const allDataSession = allData[2]
+               // const allDataPerformance = allData[3]
 
-            const keyDataFormat = new keyDataFormater(
-               allData[0].data.data.keyData
-            )
+               const keyDataFormat = new keyDataFormater(
+                  allData[0].data.data.keyData
+               )
 
-            const userDataFormat = new UserDataFormater(
-               allData[0].data.data.userInfos
-            )
-            const sessionDataFormat = new SessionDataFormater(
-               allData[2].data.data.sessions
-            )
-            const performanceDataFormat = new PerformanceDataFormater(
-               allData[3].data.data.data
-            )
-            // const activityDataFormat = new ActivityDataFormater(
-            //    allData[1].data.data.sessions
-            // )
+               const userDataFormat = new UserDataFormater(
+                  allData[0].data.data.userInfos
+               )
+               const sessionDataFormat = new SessionDataFormater(
+                  allData[2].data.data.sessions
+               )
+               const performanceDataFormat = new PerformanceDataFormater(
+                  allData[3].data.data.data
+               )
+               // const activityDataFormat = new ActivityDataFormater(
+               //    allData[1].data.data.sessions
+               // )
 
-            setUserData(userDataFormat)
-            setKeyData(keyDataFormat)
-            setActivity(allData[1].data.data.sessions)
-            setSession(sessionDataFormat)
-            setPerformance(performanceDataFormat)
-            setUserScore(allData[0].data.data.score)
-            setIsLoading(false)
-         })
-      )
+               setUserData(userDataFormat)
+               setKeyData(keyDataFormat)
+               setActivity(allData[1].data.data.sessions)
+               setSession(sessionDataFormat)
+               setPerformance(performanceDataFormat)
+               setUserScore(
+                  allData[0].data.data.score || allData[0].data.data.todayScore
+               )
+               setIsLoading(false)
+            })
+         )
+      }
    }, [])
    //
    const value = {
