@@ -10,7 +10,7 @@ import {
    YAxis,
 } from 'recharts'
 import { dataContext } from '../../data/fetch'
-
+import propTypes from 'prop-types'
 import './BarChartActivity.scss'
 
 /**
@@ -32,6 +32,7 @@ const BarChartActivity = () => {
          calories: act.calories,
       }
    })
+
    /**
     * a custom function to set up the tooltip of the charts to suits the design
     * @param {active}
@@ -153,4 +154,12 @@ const BarChartActivity = () => {
    )
 }
 
+BarChartActivity.propTypes = {
+   activityData: propTypes.shape({
+      day: propTypes.string,
+      kilogram: propTypes.number,
+      calories: propTypes.number,
+   }),
+   isLoading: propTypes.bool,
+}
 export default BarChartActivity

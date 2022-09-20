@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import { dataContext } from '../../data/fetch'
 import './LineChartDuration.scss'
+import propTypes from 'prop-types'
 
 /**
  * @component the line chart of the averages sessions component who render html using the context to collect specific data
@@ -20,7 +21,6 @@ const LineChartDuration = () => {
     * collect modelise datas from the context using useContext
     */
    const { session, isLoading } = useContext(dataContext)
-
    /**
     * a custom function to set up the tooltip of the charts to suits the design
     * @param {active}
@@ -132,4 +132,13 @@ const LineChartDuration = () => {
    )
 }
 
+LineChartDuration.propTypes = {
+   session: propTypes.shape({
+      sessionsData: propTypes.shape({
+         day: propTypes.string,
+         sessionsLength: propTypes.number,
+      }),
+   }),
+   isLoading: propTypes.bool,
+}
 export default LineChartDuration

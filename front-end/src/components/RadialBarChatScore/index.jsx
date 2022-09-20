@@ -7,6 +7,7 @@ import {
 import './RadialBarChatScore.scss'
 import { useContext } from 'react'
 import { dataContext } from '../../data/fetch'
+import propTypes from 'prop-types'
 
 /**
  * @component the radial chart of the user score component who render html using the context to collect specific data
@@ -96,6 +97,15 @@ const RadialBarChatScore = () => {
          )}
       </>
    )
+}
+
+RadialBarChatScore.propTypes = {
+   scoreData: propTypes.shape({
+      name: propTypes.string,
+      uv: propTypes.number,
+      fill: propTypes.string,
+   }),
+   isLoading: propTypes.bool,
 }
 
 export default RadialBarChatScore

@@ -9,6 +9,7 @@ import {
 } from 'recharts'
 import { useContext } from 'react'
 import { dataContext } from '../../data/fetch'
+import propTypes from 'prop-types'
 
 /**
  * @component the radar chart of performance datas component who render html using the context to collect specific data
@@ -71,4 +72,13 @@ const RadarChartPerformance = () => {
    )
 }
 
+RadarChartPerformance.propTypes = {
+   performance: propTypes.shape({
+      performanceData: propTypes.shape({
+         kind: propTypes.string,
+         value: propTypes.number,
+      }),
+   }),
+   isLoading: propTypes.bool,
+}
 export default RadarChartPerformance

@@ -58,7 +58,7 @@ const SessionsMockedData = () => {
 }
 
 const userMockedScore = mockedDataId(0).todayScore || mockedDataId(0).score
-console.log('mocked', userMockedScore)
+
 export {
    userMockedData,
    SessionsMockedData,

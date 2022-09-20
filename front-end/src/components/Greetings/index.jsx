@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { dataContext } from '../../data/fetch'
 import './greetings.scss'
+import propTypes from 'prop-types'
 
 /**
  * @component the greetings component who render html using the context to collect specific data
@@ -33,5 +34,10 @@ const Greetings = () => {
       </>
    )
 }
-
+Greetings.propTypes = {
+   userData: propTypes.shape({
+      firstName: propTypes.string,
+   }),
+   isLoading: propTypes.bool,
+}
 export default Greetings

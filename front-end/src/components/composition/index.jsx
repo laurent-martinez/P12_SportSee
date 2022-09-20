@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { dataContext } from '../../data/fetch'
 import './composition.scss'
+import propTypes from 'prop-types'
 
 /**
  * @component the composition cards component who render html using the context to collect specific data
@@ -70,6 +71,15 @@ const Composition = () => {
          )}
       </>
    )
+}
+Composition.propTypes = {
+   keyData: propTypes.shape({
+      carbs: propTypes.string,
+      proteins: propTypes.string,
+      lipids: propTypes.string,
+      calories: propTypes.string,
+   }),
+   isLoading: propTypes.bool,
 }
 
 export default Composition
