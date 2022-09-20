@@ -1,3 +1,9 @@
+/**
+ *@class to modelise nutritions datas from an array of datas
+ *@param {array} array of datas from the api
+ *
+ */
+
 class keyDataFormater {
    constructor(keyData) {
       this.keyData = keyData

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { DataContextProvider } from './data/fetch'
+import Error from './pages/Error'
 import Home from './pages/Home'
 import './styles/index.scss'
 
@@ -12,6 +13,7 @@ const ReactRouter = () => {
             <BrowserRouter>
                <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="*" element={<Error />} />
                </Routes>
             </BrowserRouter>
          </DataContextProvider>

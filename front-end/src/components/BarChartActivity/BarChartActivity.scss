@@ -19,8 +19,6 @@
     align-items: center;
     border: none;
 }
-@media screen and (max-width: 1500px){
-    .barChartActivity {
-        aspect-ratio: 1;
-    }
+.barchartTooltip:active {
+    border: none;
 }

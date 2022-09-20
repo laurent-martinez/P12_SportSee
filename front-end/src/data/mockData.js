@@ -1,3 +1,6 @@
+/**
+ * mocked datas from the backend.
+ */
 const USER_MAIN_DATA = [
    {
       id: 12,

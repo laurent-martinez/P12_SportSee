@@ -1,3 +1,8 @@
+/**
+ *@class to modelise activity datas from an array of datas
+ *@param {array} array of datas from the api
+ *
+ */
 class ActivityDataFormater {
    constructor(activity) {
       this.activity = activity

@@ -1,5 +1,7 @@
 import { mockedDatas } from '../mockData'
-
+/**
+ * in case needed various functions to modelise all datas collected through the api
+ */
 const url = 12
 
 const mockedDataId = (nb) => {

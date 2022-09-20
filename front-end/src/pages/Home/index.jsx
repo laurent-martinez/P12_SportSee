@@ -8,6 +8,10 @@ import RadialBarChatScore from '../../components/RadialBarChatScore'
 import VerticalNavbar from '../../components/VerticalNavbar'
 import './Home.scss'
 
+/**
+ * @component Home component who render the dashboard page with all the infos & charts
+ * @returns {HTMLElement}
+ */
 const Home = () => {
    return (
       <>

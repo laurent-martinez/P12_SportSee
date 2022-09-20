@@ -1,3 +1,9 @@
+/**
+ *@class to modelise performance datas from an array of datas
+ *@param {array} array of datas from the api
+ *
+ */
+
 class PerformanceDataFormater {
    constructor(performance) {
       this.performance = performance

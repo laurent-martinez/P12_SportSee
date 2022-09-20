@@ -1,3 +1,8 @@
+/**
+ *@class to modelise average sessions datas from an array of datas
+ *@param {array} array of datas from the api
+ *
+ */
 class SessionDataFormater {
    constructor(session) {
       this.sessions = this.getDayFr(session.day)

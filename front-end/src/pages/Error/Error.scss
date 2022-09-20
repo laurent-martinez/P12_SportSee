@@ -1,0 +1,13 @@
+.errorPage {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &_title {
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 46px;
+        color: white;
+        text-align: center;
+    }
+}
