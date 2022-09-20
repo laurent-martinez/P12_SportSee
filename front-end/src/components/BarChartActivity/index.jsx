@@ -79,7 +79,6 @@ const BarChartActivity = () => {
                            wrapperStyle={{ top: -5, left: '30%' }}
                            iconType="circle"
                            formatter={(value) => {
-                              console.log(value)
                               return (
                                  <span style={{ color: '#74798C' }}>
                                     {' '}
