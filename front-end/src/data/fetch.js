@@ -13,7 +13,7 @@ import PerformanceDataFormater from './models/PerformanceDataFormater'
 export const dataContext = createContext(null)
 
 /**
- * a component that provide a context provider, calling the api to get datas, call the formatters to modelise the data & exporting an object of variables through a dataContext provider.
+ * @function that provide a context provider, calling the api to get datas, call the formatters to modelise the data & exporting an object of variables through a dataContext provider.
  * @param {children}
  * @returns {element}
  */
@@ -38,7 +38,7 @@ export const DataContextProvider = ({ children }) => {
        */
       setIsLoading(true)
       /**
-       * url of the user to get his specific datas.
+       * url of the user to get his specific datas(modify url if you want to access to other users)
        */
       const url = 18
 
