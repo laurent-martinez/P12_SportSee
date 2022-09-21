@@ -57,46 +57,51 @@ export const DataContextProvider = ({ children }) => {
       const getActivity = axios.get(activityUrl)
       const getSession = axios.get(sessionUrl)
       const getPerformance = axios.get(performanceUrl)
-
+      console.log(getUserData)
       /**
        * using axios to get datas
        */
-      axios.all([getUserData, getActivity, getSession, getPerformance]).then(
-         axios.spread((...allData) => {
-            /**
-             * using the formatters to modelise the arrays of datas from the api
-             */
-            const keyDataFormat = new keyDataFormater(
-               allData[0].data.data.keyData
-            )
+      axios
+         .all([getUserData, getActivity, getSession, getPerformance])
+         .then(
+            axios.spread((...allData) => {
+               /**
+                * using the formatters to modelise the arrays of datas from the api
+                */
+               const keyDataFormat = new keyDataFormater(
+                  allData[0].data.data.keyData
+               )
 
-            const userDataFormat = new UserDataFormater(
-               allData[0].data.data.userInfos
-            )
-            const sessionDataFormat = new SessionDataFormater(
-               allData[2].data.data.sessions
-            )
-            const performanceDataFormat = new PerformanceDataFormater(
-               allData[3].data.data.data
-            )
-
-            /**
-             * define the new state of variables after getting modelise datas
-             */
-            setUserData(userDataFormat)
-            setKeyData(keyDataFormat)
-            setActivity(allData[1].data.data.sessions)
-            setSession(sessionDataFormat)
-            setPerformance(performanceDataFormat)
-            setUserScore(
-               allData[0].data.data.score || allData[0].data.data.todayScore
-            )
-            /**
-             * setting the loading to false once datas have been collected & modelised
-             */
-            setIsLoading(false)
+               const userDataFormat = new UserDataFormater(
+                  allData[0].data.data.userInfos
+               )
+               const sessionDataFormat = new SessionDataFormater(
+                  allData[2].data.data.sessions
+               )
+               const performanceDataFormat = new PerformanceDataFormater(
+                  allData[3].data.data.data
+               )
+               console.log(allData[0])
+               /**
+                * define the new state of variables after getting modelise datas
+                */
+               setUserData(userDataFormat)
+               setKeyData(keyDataFormat)
+               setActivity(allData[1].data.data.sessions)
+               setSession(sessionDataFormat)
+               setPerformance(performanceDataFormat)
+               setUserScore(
+                  allData[0].data.data.score || allData[0].data.data.todayScore
+               )
+               /**
+                * setting the loading to false once datas have been collected & modelised
+                */
+               setIsLoading(false)
+            })
+         )
+         .catch((error) => {
+            console.error(`ERROR: ${error.message}`)
          })
-      )
    }, [])
    //
    /**
