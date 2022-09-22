@@ -54,7 +54,7 @@ const BarChartActivity = () => {
    }
    return (
       <>
-         {isLoading && <>Loading....</>}
+         {isLoading && <>Loading...</>}
          {!isLoading && (
             <>
                <div className="barchart">
@@ -149,6 +149,11 @@ const BarChartActivity = () => {
                </div>
             </>
          )}
+         {/* {!isLoading && activity.length === 0 && (
+            <>
+               <div className="errorMessage">OUPS pas de données</div>
+            </>
+         )} */}
       </>
    )
 }

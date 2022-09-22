@@ -40,15 +40,15 @@ export const DataContextProvider = ({ children }) => {
       /**
        * url of the user to get his specific datas(modify url if you want to access to other users)
        */
-      const url = 18
+      const userId = 18
 
       /**
        * urls with all endpoints
        */
-      const userDataUrl = `http://localhost:3000/user/${url}`
-      const activityUrl = `http://localhost:3000/user/${url}/activity`
-      const sessionUrl = `http://localhost:3000/user/${url}/average-sessions`
-      const performanceUrl = `http://localhost:3000/user/${url}/performance`
+      const userDataUrl = `http://localhost:3000/user/${userId}`
+      const activityUrl = `http://localhost:3000/user/${userId}/activity`
+      const sessionUrl = `http://localhost:3000/user/${userId}/average-sessions`
+      const performanceUrl = `http://localhost:3000/user/${userId}/performance`
 
       /**
        * using axios to make a http get request
@@ -96,11 +96,13 @@ export const DataContextProvider = ({ children }) => {
                /**
                 * setting the loading to false once datas have been collected & modelised
                 */
-               setIsLoading(false)
             })
          )
          .catch((error) => {
             console.error(`ERROR: ${error.message}`)
+         })
+         .finally(() => {
+            setIsLoading(false)
          })
    }, [])
    //
@@ -124,21 +126,21 @@ export const DataContextProvider = ({ children }) => {
 
 // in case of needed modelised datas, from mocked datas of the backend.
 
-// import { mockedDatas } from './mockData'
-// import {
-//    ActivityMockedData,
-//    keyDataMockedData,
-//    PerformanceMockedData,
-//    SessionsMockedData,
-//    userMockedData,
-//    userMockedScore,
-// } from './models/mockedData'
-// if (mockedDatas) {
-//    setUserData(userMockedData)
-//    setKeyData(keyDataMockedData)
-//    setUserScore(userMockedScore)
-//    setActivity(ActivityMockedData())
-//    setSession(SessionsMockedData())
-//    setPerformance(PerformanceMockedData())
-//    setIsLoading(false)
-// }
+//  import { mockedDatas } from './mockData'
+//  import {
+//     ActivityMockedData,
+//     keyDataMockedData,
+//     PerformanceMockedData,
+//     SessionsMockedData,
+//     userMockedData,
+//     userMockedScore,
+//  } from './models/mockedData'
+//  if (mockedDatas) {
+//     setUserData(userMockedData)
+//     setKeyData(keyDataMockedData)
+//     setUserScore(userMockedScore)
+//     setActivity(ActivityMockedData())
+//     setSession(SessionsMockedData())
+//     setPerformance(PerformanceMockedData())
+//     setIsLoading(false)
+//  }
